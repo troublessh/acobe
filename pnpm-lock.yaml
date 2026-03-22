@@ -34,7 +34,7 @@ importers:
     dependencies:
       cobe:
         specifier: ^2.0.1
-        version: link:"https://registry.npmmirror.com/cobe/-/cobe-2.0.1.tgz"
+        version: 2.0.1
       geist:
         specifier: ^1.4.1
         version: 1.7.0(next@16.1.6)
