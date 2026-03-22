@@ -956,27 +956,6 @@ function Showcases() {
         </div>
       </div>
       <p className='hero-tagline'>COBE: The 5KB WebGL globe</p>
-      <div className='hero-links'>
-        <a
-          href='https://github.com/shuding/cobe'
-          target='_blank'
-          rel='noopener'
-        >
-          GitHub
-        </a>
-        <span className='hero-links-sep'>/</span>
-        <a href='https://x.com/shuding' target='_blank' rel='noopener'>
-          @shuding
-        </a>
-        <span className='hero-links-sep'>/</span>
-        <a
-          href='https://x.com/shuding/status/1475916082875666441'
-          target='_blank'
-          rel='noopener'
-        >
-          Tech Details →
-        </a>
-      </div>
     </section>
   )
 }
