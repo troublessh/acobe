@@ -28,14 +28,6 @@ import {
   cdnArcs,
 } from './showcases-data'
 
-const installCommands = {
-  'Copy Prompt': 'Add cobe@latest (https://cobe.vercel.app) to my app.',
-  npm: 'npm i cobe',
-  pnpm: 'pnpm i cobe',
-  yarn: 'yarn add cobe',
-  bun: 'bun add cobe',
-}
-
 const codeExample = `import createGlobe from 'cobe'
 
 const globe = createGlobe(canvas, {
@@ -1743,124 +1735,15 @@ function InlinePlayground() {
 }
 
 export default function Home() {
-  const [pkgManager, setPkgManager] =
-    useState<keyof typeof installCommands>('Copy Prompt')
   const [copied, setCopied] = useState(false)
 
-  const copyInstall = () => {
-    navigator.clipboard.writeText(installCommands[pkgManager])
-    setCopied(true)
-    setTimeout(() => setCopied(false), 1500)
-  }
 
   return (
     <div className='page'>
       {/* Hero - Showcases */}
       <Showcases />
 
-      {/* Install Section */}
-      <section className='section'>
-        <div className='install-box'>
-          <div className='install-tabs'>
-            {(
-              Object.keys(installCommands) as Array<
-                keyof typeof installCommands
-              >
-            ).map((pm) => (
-              <button
-                key={pm}
-                className={`install-tab ${pkgManager === pm ? 'active' : ''}`}
-                onClick={() => setPkgManager(pm)}
-              >
-                {pm}
-              </button>
-            ))}
-          </div>
-          <div className='install-command' onClick={copyInstall}>
-            <code>{installCommands[pkgManager]}</code>
-            <span className='install-copy'>{copied ? 'Copied!' : 'Copy'}</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Code Example */}
-      <section className='section'>
-        <h2>Usage</h2>
-        <Code code={codeExample} />
-        <p className='section-note'>
-          Works with any framework:{' '}
-          <a
-            href='https://codesandbox.io/s/eager-sky-r2q0g'
-            target='_blank'
-            rel='noopener'
-          >
-            React
-          </a>
-          ,{' '}
-          <a
-            href='https://stackblitz.com/edit/vitejs-vite-l5a8xk'
-            target='_blank'
-            rel='noopener'
-          >
-            Vue
-          </a>
-          ,{' '}
-          <a
-            href='https://codesandbox.io/s/great-visvesvaraya-78yf6'
-            target='_blank'
-            rel='noopener'
-          >
-            Svelte
-          </a>
-          , or vanilla JS.
-        </p>
-      </section>
-
-      {/* API Reference */}
-      <section className='section'>
-        <h2>API</h2>
-        <p className='section-intro'>
-          <code>createGlobe(canvas, options)</code> returns an object with{' '}
-          <code>update()</code> and <code>destroy()</code> methods.
-        </p>
-        <h3 className='api-subheading'>Options</h3>
-        <div className='api-grid'>
-          {apiOptions.map((opt) => (
-            <div key={opt.name} className='api-item'>
-              <div className='api-header'>
-                <code className='api-name'>{opt.name}</code>
-                <span className='api-type'>{opt.type}</span>
-                {opt.required && <span className='api-required'>required</span>}
-              </div>
-              <span className='api-desc'>{opt.desc}</span>
-            </div>
-          ))}
-        </div>
-        <h3 className='api-subheading'>Returned Methods</h3>
-        <div className='api-grid'>
-          {returnedMethods.map((method) => (
-            <div key={method.name} className='api-item'>
-              <div className='api-header'>
-                <code className='api-name'>{method.name}</code>
-                <span className='api-type'>{method.type}</span>
-              </div>
-              <span className='api-desc'>{method.desc}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Recipes */}
-      <Recipes />
-
-      {/* Markers & Arcs */}
-      <MarkersArcs />
-
-      {/* Custom Labels */}
-      <CustomLabels />
-
-      {/* Playground */}
-      <InlinePlayground />
+    
 
       {/* Footer */}
       <footer className='footer'>
